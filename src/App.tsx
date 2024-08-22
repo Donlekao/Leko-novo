@@ -6,6 +6,7 @@ import {Routes, Route} from 'react-router-dom';
 import Cabecalho from "./componentes/cabecalho";
 import AlunoDetalhe from "./paginas/alunoDetalhe";
 import Pai from "./paginas/pai";
+import Listas from "./paginas/listas";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/alunos" element= {<Alunos/>} />
         <Route path="/alunos/:aluno" element = {<AlunoDetalhe/>} />
         <Route path="/pai" element= {<Pai/>} />
+        <Route path='/listas'element = {<Listas/>} />
 
       </Routes>
 
