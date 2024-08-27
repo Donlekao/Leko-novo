@@ -7,6 +7,7 @@ import Cabecalho from "./componentes/cabecalho";
 import AlunoDetalhe from "./paginas/alunoDetalhe";
 import Pai from "./paginas/pai";
 import Listas from "./paginas/listas";
+import Condicao from "./paginas/condicao";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/alunos/:aluno" element = {<AlunoDetalhe/>} />
         <Route path="/pai" element= {<Pai/>} />
         <Route path='/listas'element = {<Listas/>} />
+        <Route path="/condicao" element = {<Condicao/>} />
 
       </Routes>
 
