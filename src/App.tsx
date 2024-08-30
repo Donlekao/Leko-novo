@@ -8,6 +8,7 @@ import AlunoDetalhe from "./paginas/alunoDetalhe";
 import Pai from "./paginas/pai";
 import Listas from "./paginas/listas";
 import Condicao from "./paginas/condicao";
+import Requisicoes from "./paginas/requisicoes";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/pai" element= {<Pai/>} />
         <Route path='/listas'element = {<Listas/>} />
         <Route path="/condicao" element = {<Condicao/>} />
+        <Route path="/requisicoes" element = {<Requisicoes/>} />
 
       </Routes>
 
