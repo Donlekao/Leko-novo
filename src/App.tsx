@@ -9,6 +9,8 @@ import Pai from "./paginas/pai";
 import Listas from "./paginas/listas";
 import Condicao from "./paginas/condicao";
 import Requisicoes from "./paginas/requisicoes";
+import Loja from "./paginas/loja";
+import RTLoja from "./paginas/rTLoja";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Route path='/listas'element = {<Listas/>} />
         <Route path="/condicao" element = {<Condicao/>} />
         <Route path="/requisicoes" element = {<Requisicoes/>} />
+        <Route path="/loja" element = {<Loja/>} />
+        <Route path="/rTLoja" element = {<RTLoja/>} />
 
       </Routes>
 
