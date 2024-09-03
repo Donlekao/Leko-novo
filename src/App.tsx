@@ -11,6 +11,7 @@ import Condicao from "./paginas/condicao";
 import Requisicoes from "./paginas/requisicoes";
 import Loja from "./paginas/loja";
 import RTLoja from "./paginas/rTLoja";
+import RequisicoesTypes from "./paginas/requisicoesTypes";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/requisicoes" element = {<Requisicoes/>} />
         <Route path="/loja" element = {<Loja/>} />
         <Route path="/rTLoja" element = {<RTLoja/>} />
+        <Route path="/requisicoesType" element = {<RequisicoesTypes/>} />
 
       </Routes>
 
