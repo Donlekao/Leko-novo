@@ -12,6 +12,7 @@ import Requisicoes from "./paginas/requisicoes";
 import Loja from "./paginas/loja";
 import RTLoja from "./paginas/rTLoja";
 import RequisicoesTypes from "./paginas/requisicoesTypes";
+import RequisicoesTypesAsync from "./paginas/requisicoesTypesAsync";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/loja" element = {<Loja/>} />
         <Route path="/rTLoja" element = {<RTLoja/>} />
         <Route path="/requisicoesType" element = {<RequisicoesTypes/>} />
+        <Route path="/requisicoesTypesAsync" element = {<RequisicoesTypesAsync />} />
 
       </Routes>
 
