@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { Usuarios } from "../types/usuarios";
+import { title } from "process";
 
 function RequisicaoPost (){
 
@@ -30,12 +31,53 @@ function RequisicaoPost (){
 
     }
 
-    const handleAddClick = async () => {
-        if( addTitulo && addBody){
-            
+    const AdicionarUsuarios = async () => {
+
+        if (addTitulo && addBody){
+
+            let response = await fetch ('https://jsonplaceholder.typicode.com/posts',
+            {
+                method: 'POST',
+                body:JSON.stringify(
+                    {
+                        title: addTitulo,
+                        body: addBody,
+                        userID: 1
+                    }
+                ),
+
+            headers: {
+
+                'Content-Type': 'application/json'
+                    }
+            }
+        
+        
+
+        );
+    
+        let json = await response.json();
+
+        console.log(json);
+
+        if (json.id){
+            alert('Post adicionado com sucesso')
+            setUsuarios((usuarios) => [...usuarios,json]);
+        }else {
+            alert('Ocorreu alguma falha')
         }
 
+    } else {
+        alert('preencha as informações');
     }
+
+ }
+    // const handleAddClick = async () => {
+    //     if( addTitulo && addBody){
+            
+    //     }
+
+    // }
 
     return(
         <div>
@@ -55,7 +97,10 @@ function RequisicaoPost (){
                 onChange={handleChangeBody}
                 
                 />
+            <button onClick={AdicionarUsuarios}> Adicionar usuario </button>
 
+
+        
                 <hr />
                  <h1>Consulta de informações</h1>
                  <button onClick={carregarUsuarios}> Carregar </button>
@@ -63,14 +108,14 @@ function RequisicaoPost (){
                 {usuarios.map((item, index) => (
                     <div>
                         <h2> Dados de usuario</h2>
-                        Titulo: {item.titile} <br />
+                        Titulo: {item.title} <br />
                         User ID: {item.userId} <br />
 
                     </div>
                 ))}
 
                 
-
+                
 
             </div>
 
