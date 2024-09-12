@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { Usuarios } from "../types/usuarios";
 import { title } from "process";
+import { ModuloApi } from "../api";
 
 function RequisicaoPost (){
 
@@ -8,6 +9,7 @@ function RequisicaoPost (){
     
     const [addTitulo, setaddTitulo] = useState ('');
     const [addBody, setaddBody] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleChangeTitulo = (info:ChangeEvent<HTMLInputElement>) =>{
         setaddTitulo (info.target.value);
@@ -22,9 +24,10 @@ function RequisicaoPost (){
     const [usuarios, setUsuarios] = useState <Usuarios[]>([]);
 
     const carregarUsuarios = async() => {
-        let response = await fetch ('https://jsonplaceholder.typicode.com/todos/1');
-        let json = await response.json();
+        setLoading(true);
+        let json = await ModuloApi.CarregarUsuarios();
         const Dados = Array.isArray(json) ? json: [json];
+        setLoading (false);
         setUsuarios (Dados);
 
 
@@ -35,31 +38,9 @@ function RequisicaoPost (){
 
         if (addTitulo && addBody){
 
-            let response = await fetch ('https://jsonplaceholder.typicode.com/posts',
-            {
-                method: 'POST',
-                body:JSON.stringify(
-                    {
-                        title: addTitulo,
-                        body: addBody,
-                        userID: 1
-                    }
-                ),
-
-            headers: {
-
-                'Content-Type': 'application/json'
-                    }
-            }
-        
-        
-
-        );
+            let json = await 
+                ModuloApi.AdicionarUsuarios (addTitulo, addBody, 1);
     
-        let json = await response.json();
-
-        console.log(json);
-
         if (json.id){
             alert('Post adicionado com sucesso')
             setUsuarios((usuarios) => [...usuarios,json]);
@@ -72,16 +53,30 @@ function RequisicaoPost (){
     }
 
  }
-    // const handleAddClick = async () => {
-    //     if( addTitulo && addBody){
-            
-    //     }
-
-    // }
 
     return(
-        <div>
+            <div>
+                {loading &&
+                <div> Carregando conteudo ...  </div>
+                }
 
+
+                {!loading &&
+                <div>
+                    <h1>  Pag ex de requisicoes  </h1>
+
+                    <button onClick={carregarUsuarios}>Carregar produtos </button>
+                <br />
+                    total de usuarios: {usuarios.length}
+                        
+            </div>
+
+
+
+
+    }
+            
+            
             <div>
                 <h1> Cadastro de usuarios </h1>
                 <input type="text" 
